@@ -1,0 +1,20 @@
+# app/config/security.yml
+security:
+    providers:
+        users_in_memory:
+            memory: ~
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            http_basic: ~
+            provider: users_in_memory
+
+
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: '^/hello', roles: ROLE_ADMIN }    
