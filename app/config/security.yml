@@ -41,6 +41,7 @@ security:
                 csrf_token_generator: security.csrf.token_manager
             logout:
                 # The route name the user can go to in order to logout
+                # security_logout là  path trong controller security
                 path: security_logout
                 # The name of the route to redirect to after logging out
                 target: /
@@ -51,7 +52,11 @@ security:
     access_control:
         # this is a catch-all for the admin area
         # additional security lives in the controllers
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        # tất cả đều truy cập được /login
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY} 
+        # người dùng đã đăng nhập mới truy cập được
         - { path: ^/$, roles: IS_AUTHENTICATED_FULLY}
+        # người dùng có role: ROLE_ADMIN mới truy cập được
         - { path: ^/admin, roles: ROLE_ADMIN }
+        # người dùng có role: ROLE_USER mới truy cập được
         - { path: ^/hello, roles: ROLE_USER }

@@ -55,7 +55,8 @@ class User implements UserInterface
 
     public function __construct()
     {
-        //$this->roles = ['ROLE_USER','ROLE_ADMIN'];
+        // chỗ khởi tạo giá trị cho ROLE nếu khi dăng ký ko có ROLE
+        $this->roles = ['ROLE_USER'];
     }
 
     // other properties and methods
@@ -133,7 +134,7 @@ a:2:{i:0;s:9:"ROLE_USER";i:1;s:10:"ROLE_ADMIN";}
 
         // guarantees that a user always has at least one role for security
         if (empty($roles)) {
-            $roles[] = 'ROLE_USER';
+            $roles[] = 'ROLE_ADMIN';
         }
 
         return $roles;
