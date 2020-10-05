@@ -11,8 +11,16 @@ class HelloController extends Controller
     /**
      * @Route("/hello")
      */
-    public function adminAction()
+    public function heloAction()
     {
         return new Response('<html><body>HELLO page!</body></html>');
+    }
+
+    /**
+     * @Route("/admin")
+     */
+    public function adminAction()
+    {
+        return new Response('<html><body>HELLO ADMIN page!</body></html>');
     }
 }
